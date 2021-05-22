@@ -83,7 +83,7 @@ class math{
             }
         }
 
-        print(){
+        void print(){
             for (int i=0;i<operators.size();i++){
                 cout<<number[i]<<operators[i];
             }

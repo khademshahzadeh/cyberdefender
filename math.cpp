@@ -12,28 +12,18 @@ class math{
         vector<char> operators;
         int result;
     public:
-        int calculate(){
+        int priorityCheck(){
             for (int i=0;i<operatornum.size();i++){
                 if(operatornum[i]==2){
-                    if(i!=operatornum.size()-1){
-                        number[i]=number[i]*number[i+1];
-                        operatornum.erase(operatornum.begin()+i);
-                        operators.erase(operators.begin()+i);
-                        number.erase(number.begin()+i+1);
-                        i--;
-                    }
-                    else{
-                        cout<<"here!"<<endl;
-                        number.push_back(number[i]*number[i-1]);
-                        operatornum.erase(operatornum.begin()+i);
-                        operators.erase(operators.begin()+i);
-                        number.erase(number.begin()+i);
-                        number.erase(number.begin()+i+1);
-                    }
+                    number[i]=number[i]*number[i+1];
+                    operatornum.erase(operatornum.begin()+i);
+                    operators.erase(operators.begin()+i);
+                    number.erase(number.begin()+i+1);
+                    i--;
                 }
             }
-            print();
         }
+        
         math(){
             srand(time(0));
             for (int i=0; i<9;i++){

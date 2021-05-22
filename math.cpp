@@ -11,6 +11,32 @@ class math{
         vector<int> operatornum;
         vector<char> operators;
         int result=0;
+        
+        int priorityCheck(){
+            for (int i=0;i<operatornum.size();i++){
+                if(operatornum[i]==2){
+                    number[i]=number[i]*number[i+1];
+                    operatornum.erase(operatornum.begin()+i);
+                    operators.erase(operators.begin()+i);
+                    number.erase(number.begin()+i+1);
+                    i--;
+                }
+            }
+        }
+
+        int calculate(){
+            priorityCheck();
+            result+=number[0];
+            for (int i=0; i<operatornum.size(); i++){
+                if (operatornum[i]==0){
+                    result+=number[i+1];        
+                }
+                else{
+                    result-=number[i+1];        
+                }
+            }
+        }
+
     public:
         math(){
             srand(time(0));
@@ -43,30 +69,18 @@ class math{
             }
         };
 
-        int priorityCheck(){
-            for (int i=0;i<operatornum.size();i++){
-                if(operatornum[i]==2){
-                    number[i]=number[i]*number[i+1];
-                    operatornum.erase(operatornum.begin()+i);
-                    operators.erase(operators.begin()+i);
-                    number.erase(number.begin()+i+1);
-                    i--;
-                }
+        bool checkAnswer(){
+            calculate();
+            int answer;
+            cin>>answer;
+            if (answer==result){
+                cout<<"Your answer was correct. Let's go for the next round!"<<endl;
+                return true;
             }
-        }
-
-        int calculate(){
-            priorityCheck();
-            result+=number[0];
-            for (int i=0; i<operatornum.size(); i++){
-                if (operatornum[i]==0){
-                    result+=number[i+1];        
-                }
-                else{
-                    result-=number[i+1];        
-                }
+            else{
+                cout<<"Wrong!"<<endl<<"You can do better dude!"<<endl<<"Try again but you lost one of your chances!"<<endl;
+                return false;
             }
-            cout<<result;
         }
 
         print(){
@@ -80,7 +94,6 @@ class math{
 int main(){
     math test;
     test.print();
-    test.calculate();
-    // system("PAUSE");
+    test.checkAnswer();
     return 1;
 }

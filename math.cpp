@@ -70,9 +70,10 @@ bool math::checkAnswer(){
     }
 }
 
-void math::print(){
-    for (int i=0;i<operators.size();i++){
-        cout<<number[i]<<operators[i];
+ostream &operator <<(ostream &out,math in){
+    for (int i=0;i<in.operators.size();i++){
+        cout<<in.number[i]<<in.operators[i];
     }
-    cout<<number[8]<<"= ?"<<endl;
+    cout<<in.number[8]<<"= ?"<<endl;
+    return cout;
 }

@@ -5,6 +5,7 @@
 using namespace std;
 
 class math{
+     friend ostream &operator<<(ostream &, math );
     private:
         vector<int> number;
         vector<int> operatornum;

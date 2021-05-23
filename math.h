@@ -21,5 +21,4 @@ class math{
 
         bool checkAnswer();
 
-        void print();
 };

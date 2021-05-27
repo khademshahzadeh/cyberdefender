@@ -72,8 +72,8 @@ bool math::checkAnswer(){
 
 ostream &operator <<(ostream &out,math in){
     for (int i=0;i<in.operators.size();i++){
-        cout<<in.number[i]<<in.operators[i];
+        out<<in.number[i]<<in.operators[i];
     }
-    cout<<in.number[8]<<"= ?"<<endl;
-    return cout;
+    out<<in.number[8]<<"= ?"<<endl;
+    return out;
 }

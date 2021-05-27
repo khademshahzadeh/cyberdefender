@@ -2,7 +2,7 @@
 
 int main(){
     math test;
-    test.print();
+    cout<<test;
     test.checkAnswer();
     return 1;
 }

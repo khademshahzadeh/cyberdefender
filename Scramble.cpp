@@ -21,14 +21,21 @@ private:
             wordlist>>encodedWord;
         }
     };
+    void encodedToUnscramble(){
+        for (int i = 0; i < 5; i++)
+        {
+            unscrambleWord+=char(int(encodedWord[i])-i);
+        }
+        
+    }
 public:
     Scramble(){
-      setEncodedWord();
-
+        setEncodedWord();
+        encodedToUnscramble();
     };
 };
 ostream &operator <<(ostream &out,Scramble in){
-    out<<in.encodedWord;
+    out<<in.unscrambleWord;
     return out;
 }
 

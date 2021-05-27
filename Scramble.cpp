@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <algorithm>
 #include <ctime>
 using namespace std;
 
@@ -25,17 +26,22 @@ private:
         for (int i = 0; i < 5; i++)
         {
             unscrambleWord+=char(int(encodedWord[i])-i);
-        }
-        
+        }   
     }
+    void unscrambleToScramble(){
+        scrambleWord=unscrambleWord;
+        random_shuffle(scrambleWord.begin(),scrambleWord.end());
+    }
+
 public:
     Scramble(){
         setEncodedWord();
         encodedToUnscramble();
+        unscrambleToScramble();
     };
 };
 ostream &operator <<(ostream &out,Scramble in){
-    out<<in.unscrambleWord;
+    out<<in.scrambleWord;
     return out;
 }
 

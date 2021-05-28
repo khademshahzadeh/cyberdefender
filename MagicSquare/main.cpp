@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include "Magicsquare.h"
+#include "C:\Users\free\Desktop\AP\MagicSquare\Magicsquare.h"
 
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */

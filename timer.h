@@ -1,10 +1,14 @@
 #pragma once
-#include <ctime>
+
 class Timer {
 private:
-	struct tm y;
-	int currenttime;
+	int h;
+	int m;
+	int s; 
+	void tick();
+	void Alert();
 public:
-	Timer(int hour, int min, int s);
+	Timer();
 	void display();
+
 };

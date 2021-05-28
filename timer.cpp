@@ -1,16 +1,45 @@
 #include "timer.h"
+#include <iostream>
+#include <iomanip>
 
+using namespace std;
 
-Timer::Timer(int hour, int min, int s) {
-	y.tm_hour = hour;
-	y.tm_min = min;
-	y.tm_sec = s;
-	currenttime = time(NULL)
+Timer::Timer() {
+	h = 0;
+	m = 5;
+	s = 0;
 }
 void
 Timer::display() {
-	int h = difftime(currenttime, y) / 3600;
-	int m = difftime(currenttime, y) / 60 - (h * 60);
-	int s = difftime(currenttime, y) - (h * 3600) - (m * 60);
-	cout << "timer : " << h << " : " << "m" << " : " << "s" << endl;
+	cout << setfill('0') << setw(2) << h;
+	cout <<" : " << setfill('0') << setw(2) << m;
+	cout <<" : " << setfill('0') << setw(2) << s << endl;
+	tick();
+}
+void 
+Timer::tick(){
+	if(s == 0){
+		if(m == 0){
+			if(h == 0)
+				Alert();
+			else
+			{
+				h--;
+				m += 59;
+				s += 59;
+			}
+		}
+		else
+		{
+			m--;
+			s += 59;
+		}
+	}
+	else{
+		s--;
+	}
+}
+void
+Timer::Alert(){
+	cout << "Time had ended";
 }
